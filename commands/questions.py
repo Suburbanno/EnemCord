@@ -8,15 +8,15 @@ class Enem(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    def get_question(self, year, number):
-        url = f"https://api.enem.dev/v1/exams/{year}/questions/{number}"
+    def get_question(self, ano, numero):
+        url = f"https://api.enem.dev/v1/exams/{ano}/questions/{numero}"
         response = requests.get(url)
         return response.json()
 
-    @app_commands.command(name="enem", description="Obtenha questões do ENEM.")
-    @app_commands.describe(year="Ano da prova", number="Número da questão")
-    async def enem(self, interaction: discord.Interaction, year: str, number: str):
-        question = self.get_question(year, number)
+    @app_commands.command(name="questao", description="Obtenha questões do ENEM.")
+    @app_commands.describe(ano="Ano da prova", numero="Número da questão")
+    async def enem(self, interaction: discord.Interaction, ano: str, numero: str):
+        question = self.get_question(ano, numero)
 
         if 'error' in question or not question:
             await interaction.response.send_message("Questão não encontrada.", ephemeral=True)
@@ -78,12 +78,12 @@ class Enem(commands.Cog):
         async def check_answer(self, interaction: discord.Interaction, answer: str):
             if answer == self.correct_answer:
                 await interaction.response.send_message(
-                    f"{interaction.user.mention}, você respondeu corretamente!",
+                    f"{interaction.user.mention}, ✅ Você respondeu corretamente!",
                     ephemeral=False
                 )
             else:
                 await interaction.response.send_message(
-                    f"{interaction.user.mention}, resposta errada! A resposta correta era: {self.correct_answer}",
+                    f"{interaction.user.mention}, ❎ Resposta errada!\nA resposta correta era: {self.correct_answer}",
                     ephemeral=False
                 )
 

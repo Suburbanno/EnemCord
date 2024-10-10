@@ -28,8 +28,8 @@ async def bump(ctx:commands.Context):
 @bot.event
 async def on_ready():
     await load_cogs()
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='Interstellar 🛰️'))
-    print(f'Logged in as {bot.user} (ID: {bot.user.id})')
-    print('------')
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='Telecurso 📚'))
+    print(f'Logged in as {bot.user}')
+    print('--------------------------')
 
 bot.run(token)
