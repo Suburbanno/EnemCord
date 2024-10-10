@@ -13,7 +13,7 @@ class Enem(commands.Cog):
         response = requests.get(url)
         return response.json()
 
-    @app_commands.command(name="questao", description="Obtenha questões do ENEM.")
+    @app_commands.command(name="questao", description="Obtenha questões por ano e número.")
     @app_commands.describe(ano="Ano da prova", numero="Número da questão")
     async def enem(self, interaction: discord.Interaction, ano: str, numero: str):
         question = self.get_question(ano, numero)

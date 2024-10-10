@@ -6,7 +6,7 @@ class Datas(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @app_commands.command(name="calendario", description="Informações sobre as datas, disciplinas e duração das provas do ENEM.")
+    @app_commands.command(name="calendario", description="Informações sobre as datas, disciplinas e duração das provas.")
     async def enem_datas(self, interaction: discord.Interaction):
         embed = discord.Embed(
             title="ENEM 2024 - Datas, Disciplinas e Duração",
